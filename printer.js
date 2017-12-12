@@ -304,6 +304,18 @@ Printer.prototype.barcode = function (code, type, width = 0, height = 0, positio
 };
 
 /**
+ * Send data to hardware and flush buffer
+ *
+ * @param callback
+ * @returns {Printer}
+ */
+Printer.prototype.flush = function (callback) {
+    let buf = this.buffer.flush();
+    this.adapter.write(buf, callback);
+    return this;
+};
+
+/**
  * Full Cut Paper
  */
 Printer.prototype.cut = function () {
