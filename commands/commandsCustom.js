@@ -196,7 +196,7 @@ _.BARCODE_FORMAT = {
     BARCODE_UPC_E: '\x1d\x6b\x01', // Barcode type UPC-E
     BARCODE_EAN13: '\x1d\x6b\x02', // Barcode type EAN13
     BARCODE_EAN8: '\x1d\x6b\x03', // Barcode type EAN8
-    BARCODE_CODE39: '\x1d\x6b\x45', // Barcode type CODE39
+    BARCODE_CODE39: '\x1d\x6b\x69', // Barcode type CODE39
     BARCODE_ITF: '\x1d\x6b\x05', // Barcode type ITF
     BARCODE_CODEABAR: '\x1d\x6b\x06', // Barcode type NW7
     BARCODE_CODE93: '\x1d\x6b\x07', // Barcode type CODE93

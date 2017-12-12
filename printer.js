@@ -4,6 +4,7 @@ const qr = require('qr-image');
 const iconv = require('iconv-lite');
 const getPixels = require('get-pixels');
 const Buffer = require('mutable-buffer');
+const Buff = require('buffer').Buffer;
 const EventEmitter = require('events');
 const Image = require('./image');
 const utils = require('./utils/utils');
@@ -25,7 +26,7 @@ function Printer(adapter) {
     EventEmitter.call(this);
     this.adapter = adapter;
     this.buffer = new Buffer();
-    this.encoding = 'GB18030';
+    this.encoding = 'UTF-8';
     this._model = null;
 }
 
@@ -287,9 +288,11 @@ Printer.prototype.barcode = function (code, type, width = 0, height = 0, positio
     this.buffer.write(_.BARCODE_FORMAT.BARCODE_TXT_BLW); // Set HRI
     this.buffer.write(_.BARCODE_FORMAT.BARCODE_WIDTH_DEFAULT); // Set Width
     this.buffer.write(_.BARCODE_FORMAT.BARCODE_HEIGHT_DEFAULT); // Set Height
-    codeLength = utils.codeLength(code);
+    // codeLength = utils.codeLength(code);
     // this.buffer.write(code + codeLength);
-    this.buffer.write('\x45\x13');
+    // let codeBytes = Buffer.from(code, 'utf8');
+    let codeBytes = Buff.from(code, 'utf8');
+    this.buffer.write('\x69\x13' + code);
 };
 
 /**
