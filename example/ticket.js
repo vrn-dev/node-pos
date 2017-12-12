@@ -49,7 +49,10 @@ device.open((err) => {
         .println('First 15 Minutes Free')
         .println('Lost Ticket Charge AED 150')
         .style('I')
-        .println('Thank You')
+        .println('Thank You');
+    console.log(printer.buffer.MutableBuffer._buffer);
+
+    printer
         .cut()
         .cut()
         .close()

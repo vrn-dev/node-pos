@@ -50,6 +50,7 @@ util.inherits(Printer, EventEmitter);
  */
 Printer.prototype.model = function (_model) {
     this._model = model;
+    return this;
 };
 
 /**
@@ -61,6 +62,7 @@ Printer.prototype.model = function (_model) {
 Printer.prototype.marginLeft = function (size) {
     this.buffer.write(_.MARGINS.LEFT);
     this.buffer.writeUInt8(size);
+    return this;
 };
 
 /**
@@ -71,6 +73,7 @@ Printer.prototype.marginLeft = function (size) {
  */
 Printer.prototype.print = function (content) {
     this.buffer.write(content);
+    return this;
 };
 
 Printer.prototype.println = function (content) {
@@ -84,6 +87,7 @@ Printer.prototype.println = function (content) {
  */
 Printer.prototype.lineFeed = function () {
     this.buffer.write(_.LF);
+    return this.flush();
 };
 
 /**
@@ -116,6 +120,7 @@ Printer.prototype.pureText = function (content, encoding) {
  */
 Printer.prototype.encode = function (encoding) {
     this.encoding = encoding;
+    return this;
 };
 
 /**
@@ -130,6 +135,7 @@ Printer.prototype.control = function (ctrl) {
     this.buffer.write(_.FEED_CONTROL_SEQUENCES[
     'CTL_' + ctrl.toUpperCase()
         ]);
+    return this;
 };
 
 /**
@@ -144,6 +150,7 @@ Printer.prototype.align = function (align) {
     this.buffer.write(_.TEXT_FORMAT[
     'TXT_ALIGN_' + align.toUpperCase()
         ]);
+    return this;
 };
 
 /**
@@ -157,6 +164,7 @@ Printer.prototype.font = function (family) {
     this.buffer.write(_.TEXT_FORMAT[
     'TXT_FONT_' + family.toUpperCase()
         ]);
+    return this;
 };
 
 /**
@@ -231,6 +239,7 @@ Printer.prototype.style = function (style) {
             this.buffer.write(_.TEXT_FORMAT.TXT_UNDERL_OFF);
             break;
     }
+    return this;
 };
 
 Printer.prototype.size = function (width, height) {
@@ -240,6 +249,7 @@ Printer.prototype.size = function (width, height) {
         this.buffer.write(_.TEXT_FORMAT.TXT_2HEIGHT);
         this.buffer.write(_.TEXT_FORMAT.TXT_2WIDTH);
     }
+    return this;
 };
 
 /**
@@ -255,6 +265,7 @@ Printer.prototype.lineSpace = function (n) {
         this.buffer.write(_.LINE_SPACING.LS_1_8);
         this.buffer.writeUInt8(n);
     }
+    return this;
 };
 
 /**
@@ -290,6 +301,7 @@ Printer.prototype.barcode = function (code, type, width = 0, height = 0, positio
     codeLength = utils.codeLength(code);
     // this.buffer.write(code + codeLength);
     this.buffer.write('\x45\x13');
+    return this;
 };
 
 /**
@@ -301,6 +313,7 @@ Printer.prototype.barcode = function (code, type, width = 0, height = 0, positio
 Printer.prototype.flush = function (callback) {
     let buf = this.buffer.flush();
     this.adapter.write(buf, callback);
+    return this;
 };
 
 /**
