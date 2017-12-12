@@ -174,6 +174,8 @@ _.BARCODE_FORMAT = {
     BARCODE_TXT_ABV: '\x1d\x48\x01', // HRI barcode chars above
     BARCODE_TXT_BLW: '\x1d\x48\x02', // HRI barcode chars below
     BARCODE_TXT_BTH: '\x1d\x48\x03', // HRI barcode chars both above and below
+    BARCODE_TXT_FONT_A: '\x1d\x66\x00', // HRI Barcode font A
+    BARCODE_TXT_FONT_B: '\x1d\x66\x01', //HRI Barcode Font B
 
     /**
      * @return {string}
