@@ -59,4 +59,5 @@ device.open((err) => {
     printer.cut();
     printer.cut();
     printer.close();
+    console.log(err)
 });
