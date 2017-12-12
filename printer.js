@@ -285,10 +285,10 @@ Printer.prototype.barcode = function (code, type, width = 0, height = 0, positio
 
     // TODO implement all barcodes
 
-    this.buffer.write(_.BARCODE_FORMAT.BARCODE_TXT_BLW); // Set HRI
-    this.buffer.write(_.BARCODE_FORMAT.BARCODE_TXT_FONT_A); // Set HRI font
-    this.buffer.write(_.BARCODE_FORMAT.BARCODE_WIDTH_DEFAULT); // Set Width
-    this.buffer.write(_.BARCODE_FORMAT.BARCODE_HEIGHT_DEFAULT); // Set Height
+    //this.buffer.write(_.BARCODE_FORMAT.BARCODE_TXT_OFF); // Set HRI
+    //this.buffer.write(_.BARCODE_FORMAT.BARCODE_TXT_FONT_A); // Set HRI font
+    //this.buffer.write(_.BARCODE_FORMAT.BARCODE_WIDTH_DEFAULT); // Set Width
+    //this.buffer.write(_.BARCODE_FORMAT.BARCODE_HEIGHT_DEFAULT); // Set Height
     // codeLength = utils.codeLength(code);
     // this.buffer.write(code + codeLength);
     // let codeBytes = Buffer.from(code, 'utf8');
