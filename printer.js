@@ -293,7 +293,7 @@ Printer.prototype.barcode = function (code, type, width = 0, height = 0, positio
     // this.buffer.write(code + codeLength);
     // let codeBytes = Buffer.from(code, 'utf8');
     let codeBytes = Buff.from(code, 'utf8');
-    this.buffer.write('\x1d\x6b\x04' + code + '\x00');
+    this.buffer.write('\x1d\x6b\x02' + code + '\x00');
 };
 
 /**
